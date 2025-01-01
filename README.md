@@ -1,5 +1,5 @@
-# Projeto-kubernetes-com-minikube
-Projeto de kubernets com minikube
+# Projeto-kubernetes-com-minikube.
+Projeto de kubernets com minikube!
 Com práticas de  arquitetura em Cloud AWS, a nova arquitetura com as seguintes
 diretrizes:
 • Ambiente Kubernetes;
