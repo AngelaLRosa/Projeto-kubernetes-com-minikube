@@ -1,0 +1,42 @@
+Etapa 2: Modernização/Kubernetes
+Quais atividades são necessárias para a migração?
+•	Conteinerização das aplicações utilizando Docker.
+•	Configuração do cluster Kubernetes no EKS.
+•	Migração do backend, frontend e balanceador para o Kubernetes.
+•	Integração com serviços gerenciados na AWS (RDS, S3).
+•	Implementação de CI/CD para automação de deploys.
+Quais as ferramentas vão ser utilizadas?
+•	Docker para criação de containers.
+•	Kubernetes (EKS) para orquestração.
+•	Helm para gerenciar deployments.
+•	AWS Secrets Manager para gestão de segredos.
+•	Ferramentas de CI/CD (GitLab CI/CD, Jenkins ou AWS CodePipeline).
+Qual o diagrama da infraestrutura na AWS?
+•	EKS Cluster:
+o	Nós de trabalho (EC2 ou Fargate) em sub-redes privadas.
+o	Balanceador de carga gerenciado pelo Kubernetes ingress.
+•	Banco de Dados:
+o	Instância RDS MySQL Multi-AZ.
+•	Armazenamento de Objetos:
+o	Buckets no Amazon S3 para imagens e vídeos.
+•	Monitoramento:
+o	AWS CloudWatch, Prometheus e Grafana no EKS.
+Como serão garantidos os requisitos de Segurança?
+•	Network policies configuradas no Kubernetes.
+•	IAM roles para serviços e pods no EKS.
+•	Gerenciamento de segredos com AWS Secrets Manager.
+•	Monitoramento contínuo com AWS GuardDuty e Falco no EKS.
+Como será realizado o processo de Backup?
+•	Snapshots automáticos para volumes EBS e banco RDS.
+•	Backup do etcd do Kubernetes.
+•	Versionamento habilitado nos buckets S3.
+Qual o custo da infraestrutura na AWS (AWS Calculator)?
+•	Cluster EKS: ~$500/mês (2 nós de trabalho EC2).
+•	Banco de Dados RDS MySQL: ~$350/mês.
+•	S3 para arquivos estáticos: ~$10/mês.
+•	Total aproximado: $860/mês.
+________________________________________
+Considerações Finais
+Essa abordagem em duas etapas permite uma migração rápida, seguida por uma modernização alinhada às melhores práticas de Cloud AWS.
+Devendo deixar bem explicita as funcionalidades de cada processo devendo mostrando que sua modernização se deve ,fazer-se o quanto antes para que as pessoas responsáveis pelo sistema,
+se adaptem as mudanças que estão ocorrendo e possam ser treinados no uso das ferramentas Aws para poder gerir os processos sistemicos.
