@@ -1,0 +1,164 @@
+Etapa 1: As-Is
+Quais atividades são necessárias para a migração?
+•	Identificação dos componentes da infraestrutura atual.
+•	Configuração da infraestrutura básica na AWS:
+o	Criação de VPCs, sub-redes e grupos de segurança.
+o	Instâncias EC2 para backend, frontend e banco de dados.
+o	Buckets no S3 para armazenamento de arquivos estáticos.
+•	Migração de dados para o RDS (MySQL gerenciado).
+•	Testes de conectividade e funcionalidade.
+Quais as ferramentas vão ser utilizadas?
+1.1	AWS Migration Hub:
+O AWS Migration Hub é uma ferramenta centralizada para planejar, rastrear e gerenciar a migração de aplicações e recursos para a AWS. Ele não é instalado diretamente no Linux, mas você pode interagir com ele através do AWS CLI (Command Line Interface) ou do Console da AWS.
+Irei apresemntar um passo a passo para usar o AWS Migration Hub no Linux e tem alguns pré-requisitos para ser usado:
+1. Pré-requisitos
+•	Conta AWS: Certifique-se de que você tem acesso à conta da AWS.
+•	Permissões IAM: O usuário ou papel que você usa deve ter permissões apropriadas para interagir com o Migration Hub.
+•	AWS CLI instalada no Linux: Se ainda não estiver instalada.
+AWS DMS (Database Migration Service): O AWS Database Migration Service (AWS DMS) é um serviço gerenciado da AWS que facilita a migração de bancos de dados para a nuvem ou entre diferentes ambientes.
+ Ele é projetado para ser simples, eficiente e confiável, minimizando o tempo de inatividade durante a migração e tem suas características próprias.
+Principais Características
+1.	Suporte a múltiplos bancos de dados:
+o	Funciona com bancos de dados relacionais (ex.: MySQL, PostgreSQL, Oracle, SQL Server) e NoSQL (ex.: MongoDB, DynamoDB).
+o	Permite migração entre diferentes tipos de bancos (heterogênea) ou do mesmo tipo (homogênea).
+2.	Migração contínua:
+o	Sincroniza as alterações em tempo real usando o Change Data Capture (CDC), garantindo que o banco de dados de origem e destino permaneçam alinhados.
+3.	Alta disponibilidade:
+o	Suporta migrações com alta disponibilidade para evitar falhas durante o processo.
+4.	Compatível com grandes volumes de dados:
+o	Pode migrar bancos de dados muito grandes sem impacto significativo.
+Como Funciona
+1.	Configuração da origem e do destino:
+o	Defina os endpoints (origem e destino) que o serviço irá usar.
+2.	Criação de uma tarefa de migração:
+o	Configure o tipo de migração:
+	Migração completa
+	Migração com replicação contínua (CDC)
+3.	Execução da tarefa:
+o	O DMS transfere os dados e os mantém sincronizados.
+4.	Finalização:
+o	Após a migração, você pode verificar se os dados estão consistentes.
+Benefícios do DMS:
+•	Fácil de usar: Requer pouca configuração.
+•	Custo-efetivo: Você paga apenas pelo tempo de uso.
+•	Flexível: Suporte a diferentes bancos e formatos.
+1.2	AWS Storage Gateway e seus benefícios e funcionadades:
+O AWS Storage Gateway é um serviço híbrido que conecta ambientes locais à infraestrutura de armazenamento em nuvem da AWS. 
+Ele permite que você armazene dados localmente enquanto os integra de forma eficiente e segura com os serviços de armazenamento da AWS, como Amazon S3, EBS, e Glacier.
+Principais Funcionalidades
+1.	Acesso Híbrido:
+o	Combina armazenamento local com a escalabilidade e resiliência da nuvem AWS.
+2.	Modos de Operação:
+o	File Gateway: Interface NFS/SMB para armazenar arquivos no Amazon S3 como objetos.
+o	Tape Gateway: Emula bibliotecas de fitas virtuais (VTL) para backups na nuvem, enviados para o Amazon S3 e Glacier.
+o	Volume Gateway: Cria volumes locais sincronizados com o Amazon EBS ou usa a nuvem para backups (snapshots).
+3.	Cache local:
+o	Dados mais acessados são armazenados localmente, reduzindo a latência e otimizando o desempenho.
+Casos de Uso
+•	Backup e Recuperação:
+o	Substitua fitas físicas por soluções de arquivamento na nuvem.
+•	Armazenamento em Nuvem Expandido:
+o	Use o armazenamento local como cache e mova dados inativos para a nuvem.
+•	Migração de Dados:
+o	Facilite a transição de dados para a AWS.
+Benefícios
+•	Custo-efetivo: Reduz custos de infraestrutura local e gerenciamento de fitas.
+•	Escalável: Armazena volumes ilimitados na nuvem.
+•	Segurança: Integração com IAM, KMS, e criptografia ponta a ponta.
+•	Resiliência: Alta durabilidade ao usar serviços como o Amazon S3.
+AWS CloudWatch e AWS Config para monitoramento: AWS CloudWatch
+O AWS CloudWatch é um serviço de monitoramento e observabilidade que coleta métricas, logs e eventos dos recursos da AWS e de suas aplicações.
+Ele ajuda a identificar problemas operacionais, otimizar desempenho e configurar alertas proativos.
+Principais Recursos:
+1.	Métricas:
+o	Monitora métricas em tempo real, como uso de CPU, memória, latência, etc.
+2.	Logs:
+o	Coleta e armazena logs de aplicativos e sistemas (ex.: logs de servidor, logs de contêineres).
+3.	Alarmes:
+o	Configura alarmes para acionar notificações ou ações automáticas (como escalonamento de instâncias).
+4.	Painéis Personalizáveis:
+o	Visualiza métricas e logs em dashboards interativos.
+Casos de Uso:
+•	Monitoramento de aplicações e infraestrutura.
+•	Configuração de alertas para recursos sobrecarregados.
+•	Análise de logs para troubleshooting.
+________________________________________
+AWS Config
+O AWS Config é um serviço que fornece um inventário detalhado e histórico de configurações dos recursos da AWS, ajudando a monitorar conformidade e mudanças.
+Principais Recursos:
+1.	Rastreamento de Alterações:
+o	Registra e armazena o histórico de configurações de recursos da AWS.
+2.	Avaliação de Conformidade:
+o	Verifica se os recursos seguem políticas predefinidas usando regras (ex.: bucket S3 com criptografia habilitada).
+3.	Notificações Automatizadas:
+o	Gera alertas quando há alterações ou violações de conformidade.
+Casos de Uso:
+•	Auditoria de conformidade (ex.: padrões PCI, GDPR).
+•	Gerenciamento de mudanças e controle de configuração.
+•	Resolução de problemas relacionados a alterações não planejadas.
+________________________________________
+Diferença Principal:
+•	CloudWatch: Focado em métricas e logs para monitoramento em tempo real e desempenho operacional.
+•	AWS Config: Focado em conformidade, rastreamento de mudanças e auditoria de configurações de recursos.
+
+1.3	AWS Identity and Access Management (IAM) para segurança:
+O AWS Identity and Access Management (IAM) é um serviço que permite gerenciar o acesso a recursos da AWS de forma segura. 
+Ele possibilita criar e controlar permissões detalhadas para usuários, grupos, funções e aplicações, garantindo que cada entidade tenha apenas os privilégios necessários (princípio de menor privilégio).
+________________________________________
+Principais Recursos
+1.	Controle de Identidade:
+o	Criação de usuários e grupos para gerenciar quem pode acessar os recursos.
+2.	Controle de Permissões:
+o	Criação de políticas que definem as permissões, especificando quais ações são permitidas em quais recursos.
+3.	Funções (Roles):
+o	Permite que recursos da AWS ou aplicações assumam permissões temporárias para executar tarefas específicas.
+4.	Autenticação Segura:
+o	Suporte para autenticação multifator (MFA) para reforçar a segurança.
+o	Integração com provedores de identidade externos (ex.: SAML, OIDC).
+5.	Acesso Programático:
+o	Fornece chaves de acesso para interação via APIs ou SDKs.
+6.	Gerenciamento de Políticas:
+o	Gerenciadas pela AWS: Políticas padrão para casos de uso comuns.
+o	Gerenciadas pelo Cliente: Políticas personalizadas.
+________________________________________
+Casos de Uso
+1.	Gerenciar usuários e permissões:
+o	Criar usuários com permissões específicas (ex.: administrador vs. operador).
+2.	Acesso seguro a aplicações:
+o	Conceder permissões temporárias para funções em serviços como Lambda ou EC2.
+3.	Conformidade e auditoria:
+o	Uso de relatórios e logs para auditorar o uso de credenciais e permissões.
+4.	Integração com MFA:
+o	Garantir maior segurança para contas críticas.
+________________________________________
+Benefícios
+•	Granularidade: Controle detalhado de quem pode acessar o quê.
+•	Escalabilidade: Gerencia acesso para milhares de recursos e usuários.
+•	Segurança: Reduz riscos de acessos indevidos.
+•	Auditabilidade: Logs de atividades disponíveis no AWS CloudTrail.
+________________________________________
+Dicas Práticas
+•	Sempre aplique o princípio de menor privilégio.
+•	Habilite MFA para usuários privilegiados.
+•	Revise regularmente as políticas de permissões e acesso.
+
+Qual o diagrama da infraestrutura na AWS?
+•	Banco de Dados: Instância RDS MySQL com Multi-AZ.
+•	Frontend: Instância EC2 para aplicação React.
+•	Backend: Instância EC2 para APIs com Nginx como balanceador de carga.
+•	Armazenamento: Amazon S3 para arquivos estáticos.
+•	Rede: VPC com sub-redes públicas e privadas, configurada para alta disponibilidade.
+Como serão garantidos os requisitos de Segurança?
+•	Configuração de grupos de segurança e ACLs.
+•	Criptografia de dados em trânsito (TLS) e em repouso (KMS).
+•	Habilitação de logs no AWS CloudTrail e AWS Config.
+•	Monitoramento com AWS GuardDuty e Security Hub.
+Como será realizado o processo de Backup?
+•	Snapshots automáticos configurados no RDS.
+•	Backup de arquivos no S3 com versionamento ativado.
+•	Snapshots regulares para volumes EBS das instâncias EC2.
+Qual o custo da infraestrutura na AWS (AWS Calculator)?
+•	RDS MySQL: ~$350/mês (Multi-AZ, 500GB).
+•	EC2 para Frontend e Backend: ~$150/mês.
+•	S3 para arquivos estáticos: ~$10/mês.
+•	Total aproximado: $510/mês
