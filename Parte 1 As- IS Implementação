@@ -157,8 +157,4 @@ Como será realizado o processo de Backup?
 •	Snapshots automáticos configurados no RDS.
 •	Backup de arquivos no S3 com versionamento ativado.
 •	Snapshots regulares para volumes EBS das instâncias EC2.
-Qual o custo da infraestrutura na AWS (AWS Calculator)?
-•	RDS MySQL: ~$350/mês (Multi-AZ, 500GB).
-•	EC2 para Frontend e Backend: ~$150/mês.
-•	S3 para arquivos estáticos: ~$10/mês.
-•	Total aproximado: $510/mês
+
