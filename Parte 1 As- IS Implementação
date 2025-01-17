@@ -9,14 +9,12 @@ o	Buckets no S3 para armazenamento de arquivos estáticos.
 •	Testes de conectividade e funcionalidade.
 Quais as ferramentas vão ser utilizadas?
 1.1	AWS Migration Hub:
-O AWS Migration Hub é uma ferramenta centralizada para planejar, rastrear e gerenciar a migração de aplicações e recursos para a AWS. Ele não é instalado diretamente no Linux, mas você pode interagir com ele através do AWS CLI (Command Line Interface) ou do Console da AWS.
-Irei apresemntar um passo a passo para usar o AWS Migration Hub no Linux e tem alguns pré-requisitos para ser usado:
+O AWS Migration Hub é uma ferramenta centralizada para planejar, rastrear e gerenciar a migração de aplicações e recursos para a AWS. Ele não é instalado diretamente no Linux, mas você pode interagir com ele através do AWS CLI (Command Line Interface) ou do Console da AWS,e tem alguns pré-requisitos para ser usado:
 1. Pré-requisitos
 •	Conta AWS: Certifique-se de que você tem acesso à conta da AWS.
 •	Permissões IAM: O usuário ou papel que você usa deve ter permissões apropriadas para interagir com o Migration Hub.
 •	AWS CLI instalada no Linux: Se ainda não estiver instalada.
-AWS DMS (Database Migration Service): O AWS Database Migration Service (AWS DMS) é um serviço gerenciado da AWS que facilita a migração de bancos de dados para a nuvem ou entre diferentes ambientes.
- Ele é projetado para ser simples, eficiente e confiável, minimizando o tempo de inatividade durante a migração e tem suas características próprias.
+AWS DMS (Database Migration Service): O AWS Database Migration Service (AWS DMS) é um serviço gerenciado da AWS que facilita a migração de bancos de dados para a nuvem ou entre diferentes ambientes. Ele é projetado para ser simples, eficiente e confiável, minimizando o tempo de inatividade durante a migração e tem suas características próprias.
 Principais Características
 1.	Suporte a múltiplos bancos de dados:
 o	Funciona com bancos de dados relacionais (ex.: MySQL, PostgreSQL, Oracle, SQL Server) e NoSQL (ex.: MongoDB, DynamoDB).
@@ -38,13 +36,14 @@ o	Configure o tipo de migração:
 o	O DMS transfere os dados e os mantém sincronizados.
 4.	Finalização:
 o	Após a migração, você pode verificar se os dados estão consistentes.
-Benefícios do DMS:
+________________________________________
+Benefícios
 •	Fácil de usar: Requer pouca configuração.
 •	Custo-efetivo: Você paga apenas pelo tempo de uso.
 •	Flexível: Suporte a diferentes bancos e formatos.
 1.2	AWS Storage Gateway e seus benefícios e funcionadades:
-O AWS Storage Gateway é um serviço híbrido que conecta ambientes locais à infraestrutura de armazenamento em nuvem da AWS. 
-Ele permite que você armazene dados localmente enquanto os integra de forma eficiente e segura com os serviços de armazenamento da AWS, como Amazon S3, EBS, e Glacier.
+O AWS Storage Gateway é um serviço híbrido que conecta ambientes locais à infraestrutura de armazenamento em nuvem da AWS. Ele permite que você armazene dados localmente enquanto os integra de forma eficiente e segura com os serviços de armazenamento da AWS, como Amazon S3, EBS, e Glacier.
+________________________________________
 Principais Funcionalidades
 1.	Acesso Híbrido:
 o	Combina armazenamento local com a escalabilidade e resiliência da nuvem AWS.
@@ -54,6 +53,7 @@ o	Tape Gateway: Emula bibliotecas de fitas virtuais (VTL) para backups na nuvem,
 o	Volume Gateway: Cria volumes locais sincronizados com o Amazon EBS ou usa a nuvem para backups (snapshots).
 3.	Cache local:
 o	Dados mais acessados são armazenados localmente, reduzindo a latência e otimizando o desempenho.
+________________________________________
 Casos de Uso
 •	Backup e Recuperação:
 o	Substitua fitas físicas por soluções de arquivamento na nuvem.
@@ -61,14 +61,14 @@ o	Substitua fitas físicas por soluções de arquivamento na nuvem.
 o	Use o armazenamento local como cache e mova dados inativos para a nuvem.
 •	Migração de Dados:
 o	Facilite a transição de dados para a AWS.
+________________________________________
 Benefícios
 •	Custo-efetivo: Reduz custos de infraestrutura local e gerenciamento de fitas.
 •	Escalável: Armazena volumes ilimitados na nuvem.
 •	Segurança: Integração com IAM, KMS, e criptografia ponta a ponta.
 •	Resiliência: Alta durabilidade ao usar serviços como o Amazon S3.
 AWS CloudWatch e AWS Config para monitoramento: AWS CloudWatch
-O AWS CloudWatch é um serviço de monitoramento e observabilidade que coleta métricas, logs e eventos dos recursos da AWS e de suas aplicações.
-Ele ajuda a identificar problemas operacionais, otimizar desempenho e configurar alertas proativos.
+O AWS CloudWatch é um serviço de monitoramento e observabilidade que coleta métricas, logs e eventos dos recursos da AWS e de suas aplicações. Ele ajuda a identificar problemas operacionais, otimizar desempenho e configurar alertas proativos.
 Principais Recursos:
 1.	Métricas:
 o	Monitora métricas em tempo real, como uso de CPU, memória, latência, etc.
@@ -102,8 +102,7 @@ Diferença Principal:
 •	AWS Config: Focado em conformidade, rastreamento de mudanças e auditoria de configurações de recursos.
 
 1.3	AWS Identity and Access Management (IAM) para segurança:
-O AWS Identity and Access Management (IAM) é um serviço que permite gerenciar o acesso a recursos da AWS de forma segura. 
-Ele possibilita criar e controlar permissões detalhadas para usuários, grupos, funções e aplicações, garantindo que cada entidade tenha apenas os privilégios necessários (princípio de menor privilégio).
+O AWS Identity and Access Management (IAM) é um serviço que permite gerenciar o acesso a recursos da AWS de forma segura. Ele possibilita criar e controlar permissões detalhadas para usuários, grupos, funções e aplicações, garantindo que cada entidade tenha apenas os privilégios necessários (princípio de menor privilégio).
 ________________________________________
 Principais Recursos
 1.	Controle de Identidade:
@@ -157,4 +156,11 @@ Como será realizado o processo de Backup?
 •	Snapshots automáticos configurados no RDS.
 •	Backup de arquivos no S3 com versionamento ativado.
 •	Snapshots regulares para volumes EBS das instâncias EC2.
-
+----------------------------------------------------------------------------
+Qual o custo da infraestrutura na AWS (AWS Calculator)?
+•	RDS MySQL: ~$ 820,01 /mês (Multi-AZ, 500GB).
+•	EC2 para Frontend e Backend: ~$120/mês.
+•	S3 para arquivos estáticos: ~$ 0,29/mês.
+•	Total estimado: $ 981,51 USD /mês.
+•	Total estimado por ano:$ 11.778,12 USD.
+https://calculator.aws/#/estimate?id=16a0ce7f78cae89bd78c840a3e2128e5a1a75e33
