@@ -1,0 +1,6 @@
+Apresentação do Projeto
+Escopo Detalhado
+A Fast Engineering S/A enfrenta desafios com o crescimento do eCommerce e busca modernizar sua infraestrutura para a AWS,
+seguindo as melhores práticas de arquitetura em nuvem. O projeto será realizado em duas etapas:
+1.	Etapa 1: Migração As-Is (Lift-and-Shift) - Migrar a infraestrutura existente para a AWS, preservando a configuração atual com mínimas alterações.
+2.	Etapa 2: Modernização com Kubernetes - Reestruturar para uma arquitetura moderna baseada em conteinerização e orquestração com Kubernetes.
