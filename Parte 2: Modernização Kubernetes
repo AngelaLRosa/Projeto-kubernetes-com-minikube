@@ -30,3 +30,16 @@ Como será realizado o processo de Backup?
 •	Snapshots automáticos para volumes EBS e banco RDS.
 •	Backup do etcd do Kubernetes.
 •	Versionamento habilitado nos buckets S3.
+Qual o custo da infraestrutura na AWS (AWS Calculator)?
+•	Cluster EKS: ~$ 934,40/mês (2 nós de trabalho EC2).
+•	Banco de Dados RDS MySQL: ~$ 820,01/mês.
+•	S3 para arquivos estáticos: ~$ 0,29/mês.
+•	Total aproximado: $ 1.754,7/mês.
+https://calculator.aws/#/estimate?id=e8910add279e57469a2ad8158078959af798d082
+________________________________________
+Considerações Finais
+Essa abordagem foi feita em duas etapas permitindo uma migração rápida,
+seguida por uma modernização alinhada às melhores práticas de Cloud AWS. 
+A TI Soluções Incríveis está pronta para auxiliar a Fast Engineering S/A em todas as fases do projeto,
+garantindo alta disponibilidade, segurança e escalabilidade para o eCommerce.
+
